@@ -32,7 +32,8 @@ class DenseBlock(nn.Module):
         conv1_out = self.conv1(x)
         conv2_out = self.conv2(torch.cat([x, conv1_out], dim=1))
         conv3_out = self.conv3(torch.cat([x, conv1_out, conv2_out], dim=1))
-        return conv3_out
+        out = torch.cat([x, conv1_out, conv2_out, conv3_out], dim=1)  # cat along channel dimension
+        return out
 
 class Encoder(nn.Module):
     def __init__(self,in_channel):
@@ -48,7 +49,7 @@ class Encoder(nn.Module):
 class Decoder(nn.Module):
     def __init__(self, out_channel):
         super().__init__()
-        self.conv2 = Convlayer(16, 64)
+        self.conv2 = Convlayer(64, 64)
         self.conv3 = Convlayer(64, 32)
         self.conv4 = Convlayer(32, 16)
         self.conv5 = Convlayer(16, out_channel)
