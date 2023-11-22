@@ -6,8 +6,8 @@ class Config():
         Vis_img="./TNO/vi"
         Inf_img="./TNO/ir"
 
-        test_Vis_img="./TNO/vi"
-        test_Inf_img="./TNO/ir"
+        test_Vis_img="./RoadScene/vi"
+        test_Inf_img="./RoadScene/ir"
         HEIGHT = 256
         WIDTH = 256
         color = 'grayscale'
